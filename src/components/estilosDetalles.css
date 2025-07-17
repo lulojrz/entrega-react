@@ -1,0 +1,29 @@
+
+.content-detalles{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: rgb(241, 241, 241);
+
+}
+#carouselExampleIndicators{
+    width: 50%;
+    border: 1px solid;
+    border-radius: 10px;
+}
+
+.info-detalles{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 50%;
+    text-align: center;
+    align-items: center;
+    padding: 1rem;
+}
+.detalles-precio{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
