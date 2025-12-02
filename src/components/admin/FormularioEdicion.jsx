@@ -24,25 +24,25 @@ function FormularioEdicion({ productoSeleccionado, onActualizar }) {
         <input
           type="number"
           name="id"
-          value={producto.id || ""}
+          value={producto.Id || ""}
           onChange={handleChange}
           className="form-control"
           readOnly
         />
       </div>
       <div>
-        <label className="form-label" htmlFor="nombre">Nombre:</label>
+        <label className="form-label" htmlFor="Nombre">Nombre:</label>
         <input
           type="text"
-          name="nombre"
+          name="Nombre"
           className="form-control"
-          value={producto.nombre || ""}
+          value={producto.Nombre || ""}
           onChange={handleChange}
           required
         />
       </div>
       <div>
-        <label className="form-label" htmlFor="equipo">
+        <label className="form-label" htmlFor="Equipo">
           Equipo:
         </label>
         <input
@@ -55,7 +55,7 @@ function FormularioEdicion({ productoSeleccionado, onActualizar }) {
         />
       </div>
         <div>
-        <label className="form-label" htmlFor="temporada">
+        <label className="form-label" htmlFor="Temporada">
           Temporada:
         </label>
         <input
@@ -68,12 +68,12 @@ function FormularioEdicion({ productoSeleccionado, onActualizar }) {
         />
       </div>
       <div>
-        <label className="form-label" htmlFor="img1">
+        <label className="form-label" htmlFor="Img1">
           Imagen frente:
         </label>
         <input
           type="text"
-          name="img1"
+          name="Img1"
           className="form-control"
           value={producto.img1}
           onChange={handleChange}
@@ -81,12 +81,12 @@ function FormularioEdicion({ productoSeleccionado, onActualizar }) {
         />
       </div>
       <div>
-        <label className="form-label" htmlFor="img2">
+        <label className="form-label" htmlFor="Img2">
           Imagen dorso:
         </label>
         <input
           type="text"
-          name="img2"
+          name="Img2"
           className="form-control"
           value={producto.img2}
           onChange={handleChange}
@@ -94,19 +94,19 @@ function FormularioEdicion({ productoSeleccionado, onActualizar }) {
         />
       </div>
       <div>
-        <label className="form-label" htmlFor="categoria">Categoría:</label>
+        <label className="form-label" htmlFor="Categoria">Categoría:</label>
         <input
           type="text"
-          name="categoria"
+          name="Categoria"
           className="form-control"
-          value={producto.categoria || ""}
+          value={producto.Categoria || ""}
           onChange={handleChange}
           required
         />
 
       </div>
         <div>
-        <label className="form-label" htmlFor="pais">Pais:</label>
+        <label className="form-label" htmlFor="Pais">Pais:</label>
         <input
           type="text"
           name="Pais"
@@ -118,12 +118,24 @@ function FormularioEdicion({ productoSeleccionado, onActualizar }) {
 
       </div>
       <div>
-        <label className="form-label" htmlFor="precio">Precio:</label>
+        <label className="form-label" htmlFor="Precio">Precio:</label>
         <input
           type="number"
-          name="precio"
+          name="Precio"
           className="form-control"
-          value={producto.precio}
+          value={producto.Precio}
+          onChange={handleChange}
+          required
+          min="0"
+        />
+      </div>
+      <div>
+        <label className="form-label" htmlFor="Cantidad">Cantidad:</label>
+        <input
+          type="number"
+          name="Cantidad"
+          className="form-control"
+          value={producto.Cantidad}
           onChange={handleChange}
           required
           min="0"

@@ -8,7 +8,7 @@ export const AdminProvider = ({ children }) => {
     const [open, setOpen] = useState(false)
     const [seleccionado, setSeleccionado] = useState(null)
     const [openEditor, setOpenEditor] = useState(false)
-    const apiUrl = 'https://68793b1263f24f1fdca163bf.mockapi.io/products'
+    const apiUrl = 'http://localhost:8080/products'
 
 
     useEffect(() => {
@@ -66,7 +66,7 @@ export const AdminProvider = ({ children }) => {
 
     const actulizarProducto = async (producto) => {
         try {
-            const respuesta = await fetch(`${apiUrl}/${producto.id}`,
+            const respuesta = await fetch(`${apiUrl}/${producto.Id}`,
                 {
                     method: 'PUT',
                     headers: {
@@ -90,7 +90,7 @@ export const AdminProvider = ({ children }) => {
         const confirmar = window.confirm('Estas seguro de eliminar el producto?')
         if (confirmar) {
             try {
-                const respuesta = await fetch(`https://68793b1263f24f1fdca163bf.mockapi.io/products/${id}`, {
+                const respuesta = await fetch(`http://localhost:8080/products/${id}`, {
                     method: 'DELETE',
                 })
                 if (!respuesta.ok) throw Error('Error al eliminar')

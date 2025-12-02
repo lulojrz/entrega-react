@@ -2,14 +2,15 @@ import React, { useState } from "react";
 
 function FormularioProducto({ onAgregar }) {
   const [producto, setProducto] = useState({
-    nombre: "",
+    Nombre: "",
     Equipo: "",
     Temporada: "",
     img1: "",
     img2: "",
-    categoria: "",
+    Categoria: "",
     Pais: "",
-    precio: "",
+    Precio: "",
+    Cantidad: "",
   });
   const [errores, setErrores] = useState({});
 
@@ -20,14 +21,14 @@ function FormularioProducto({ onAgregar }) {
 
   const validarFormulario = () => {
     const nuevosErrores = {};
-    if (!producto.nombre.trim()) {
-      nuevosErrores.nombre = "El nombre es obligatorio.";
+    if (!producto.Nombre.trim()) {
+      nuevosErrores.Nombre = "El nombre es obligatorio.";
     }
-    if (!producto.precio || producto.precio <= 0) {
-      nuevosErrores.precio = "El precio debe ser mayor a 0.";
+    if (!producto.Precio || producto.Precio <= 0) {
+      nuevosErrores.Precio = "El precio debe ser mayor a 0.";
     }
-    if (!producto.categoria.trim() || producto.categoria.length < 5) {
-      nuevosErrores.categoria =
+    if (!producto.Categoria.trim() || producto.Categoria.length < 5) {
+      nuevosErrores.Categoria =
         "La categoria debe tener al menos 5 caracteres.";
     }
     setErrores(nuevosErrores);
@@ -41,14 +42,15 @@ function FormularioProducto({ onAgregar }) {
     }
     onAgregar(producto);
     setProducto({
-      nombre: "",
+      Nombre: "",
       Equipo: "",
       Temporada: "",
       img1: "",
       img2: "",
-      categoria: "",
+      Categoria: "",
       Pais: "",
-      precio: "",
+      Precio: "",
+      Cantidad: ""
     });
   };
 
@@ -56,16 +58,16 @@ function FormularioProducto({ onAgregar }) {
     <form onSubmit={handleSubmit} className="mb-3">
       <h2>Agregar Producto</h2>
       <div>
-        <label className="form-label">Nombre:</label>
+        <label className="form-label" htmlFor="Nombre">Nombre:</label>
         <input
           type="text"
-          name="nombre"
+          name="Nombre"
           className="form-control"
-          value={producto.nombre}
+          value={producto.Nombre}
           onChange={handleChange}
           required
         />
-        {errores.nombre && <p style={{ color: "red" }}>{errores.nombre}</p>}
+        {errores.Nombre && <p style={{ color: "red" }}>{errores.Nombre}</p>}
       </div>
       <div>
         <label className="form-label" htmlFor="equipo">
@@ -121,17 +123,17 @@ function FormularioProducto({ onAgregar }) {
         />
       </div>
       <div>
-        <label className="form-label" htmlFor="categoria">Categoría:</label>
+        <label className="form-label" htmlFor="Categoria">Categoría:</label>
         <input
           type="text"
-          name="categoria"
+          name="Categoria"
           className="form-control"
-          value={producto.categoria || ""}
+          value={producto.Categoria || ""}
           onChange={handleChange}
           required
         />
-        {errores.categoria && (
-          <p style={{ color: "red" }}>{errores.categoria}</p>
+        {errores.Categoria && (
+          <p style={{ color: "red" }}>{errores.Categoria}</p>
         )}
       </div>
         <div>
@@ -147,17 +149,30 @@ function FormularioProducto({ onAgregar }) {
 
       </div>
       <div>
-        <label className="form-label" htmlFor="precio">Precio:</label>
+        <label className="form-label" htmlFor="Precio">Precio:</label>
         <input
           type="number"
-          name="precio"
+          name="Precio"
           className="form-control"
-          value={producto.precio}
+          value={producto.Precio}
           onChange={handleChange}
           required
           min="0"
         />
-        {errores.precio && <p style={{ color: "red" }}>{errores.precio}</p>}
+        {errores.Precio && <p style={{ color: "red" }}>{errores.Precio}</p>}
+      </div>
+      <div>
+        <label className="form-label" htmlFor="Cantidad">Cantidad:</label>
+        <input
+          type="number"
+          name="Cantidad"
+          className="form-control"
+          value={producto.Cantidad}
+          onChange={handleChange}
+          required
+          min="0"
+        />
+       
       </div>
 
       <button type="submit" className="btn btn-primary">Agregar Producto</button>

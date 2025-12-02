@@ -13,7 +13,7 @@ const DetallesProductos = ({
   agregarCarrito,
 }) => {
   const { id } = useParams();
-  const product = productos.find((producto) => producto.id == id);
+  const product = productos.find((producto) => producto.Id == id);
   return (
     <>
       <Header
@@ -85,13 +85,13 @@ const DetallesProductos = ({
               </div>
 
               <div className="detalles-precio">
-                <h1>${product.precio}</h1>
+                <h1>${product.Precio}</h1>
                 <span style={{ color: "green" }}>
-                  Mismo precio en {product.precio > 50000 ? "6" : "3"} cuotas de
+                  Mismo precio en {product.Precio > 50000 ? "6" : "3"} cuotas de
                   $
                   {product.Precio > 50000
-                    ? Number((product.precio / 6).toFixed(2))
-                    : Number((product.precio / 3).toFixed(2))}
+                    ? Number((product.Precio / 6).toFixed(2))
+                    : Number((product.Precio / 3).toFixed(2))}
                 </span>
                 <span>Medios de Pago :</span>
                 <details>

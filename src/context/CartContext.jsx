@@ -16,7 +16,7 @@ export const CartProvider = ({ children }) => {
     const [busqueda, setBusqueda]= useState("")
 
     useEffect(() => {
-        fetch('https://68793b1263f24f1fdca163bf.mockapi.io/products')
+        fetch('http://localhost:8080/products')
             .then(respuesta => respuesta.json())
             .then(datos => {
                 setTimeout(() => {
@@ -37,39 +37,39 @@ export const CartProvider = ({ children }) => {
     }, [cart])
 
     const productosFiltrados = productos.filter((producto) =>
-        producto?.nombre.toLowerCase().includes(busqueda.toLowerCase())
+        producto?.Nombre.toLowerCase().includes(busqueda.toLowerCase())
     )
 
     const handleAddToCart = (product) => {
-        const productInCart = cart.find(item => item.id === product.id)
+        const productInCart = cart.find(item => item.Id === product.Id)
 
         if (productInCart) {
             setCart(cart.map(item =>
-                item.id === product.id
-                    ? { ...item, cantidad: item.cantidad + 1 }
+                item.Id === product.Id
+                    ? { ...item, Cantidad: item.Cantidad + 1 }
                     : item
             ))
-            toast.success(`Se agrego otra unidad de  ${product.nombre}  al carrito`)
+            toast.success(`Se agrego otra unidad de  ${product.Nombre}  al carrito`)
         } else {
-            toast.success(`El producto ${product.nombre} se ha agregado al carrito`)
-            setCart([...cart, { ...product, cantidad: 1 }])
+            toast.success(`El producto ${product.Nombre} se ha agregado al carrito`)
+            setCart([...cart, { ...product, Cantidad: 1 }])
         }
     }
 
     const handleDeleteFromCart = (product) => {
-        const productInCart = cart.find(item => item.id === product.id)
+        const productInCart = cart.find(item => item.Id === product.Id)
 
-        if (!productInCart) return // No está en el carrito, nada que hacer
+        if (!productInCart) return 
 
-        if (productInCart.cantidad > 1) {
+        if (productInCart.Cantidad > 1) {
             setCart(cart.map(item =>
-                item.id === product.id
-                    ? { ...item, cantidad: item.cantidad - 1 }
+                item.Id === product.Id
+                    ? { ...item, Cantidad: item.Cantidad - 1 }
                     : item
             ))
-            toast.info(`Se disminuyó la cantidad del producto ${product.nombre}`)
+            toast.info(`Se disminuyó la cantidad del producto ${product.Nombre}`)
         } else {
-            setCart(cart.filter(item => item.id !== product.id))
+            setCart(cart.filter(item => item.Id !== product.Id))
             toast.error(`El producto ${product.nombre} se ha eliminado del carrito`)
         }
     }
@@ -77,7 +77,7 @@ export const CartProvider = ({ children }) => {
     const clearCart = () => {
         setCart([])
         localStorage.removeItem("cart")
-        toast.info('Compra finalizada!')
+        toast.info('Carrito sin Productos')
     }
 
     return (

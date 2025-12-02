@@ -8,13 +8,13 @@ const Productos = ({producto,agregarCarrito,origen}) => {
   <div className="card-body">
     <h3 className="card-title">{producto.Equipo}</h3>
     <h6 className='card-text'>Temporada: {producto.Temporada - 1 } - {producto.Temporada}</h6>
-    <h5 className="card-title">Precio: ${producto.precio}</h5>
+    <h5 className="card-title">Precio: ${producto.Precio}</h5>
    </div>
 
    <div className="card-body">   
      <button className="btn btn-primary" onClick={()=> agregarCarrito(producto)}>Agregar unidad</button>
    </div>
-   <Link to = {origen==="Home"? `productos/${producto.id}` : `${producto.id}`  }>Ver mas</Link>
+   <Link to = {origen==="Home"? `productos/${producto.Id}` : `${producto.Id}`  }>Ver mas</Link>
 </div>
   )
 }

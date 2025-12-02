@@ -51,22 +51,22 @@ const Admin = () => {
 
                     <ul className="list" style={{"display":"flex","flexDirection":"row","justifyContent":"space-evenly","flexWrap":"wrap","gap":"20px"}}>
                         {productos.map((product) => (
-                            <li key={product.id} className="card" style={{"width":"200px"}}>
+                            <li key={product.Id} className="card" style={{"width":"200px"}}>
                                 <img
                                     src={product.img1}
-                                    alt={product.nombre}
+                                    alt={product.Nombre}
                                     className="listItemImage"
                                 />
-                                <span>#{product.id}</span>
-                                <span>{product.nombre}</span>
-                                <span>${product.precio}</span>
+                                <span>#{product.Id}</span>
+                                <span>{product.Nombre}</span>
+                                <span>${product.Precio}</span>
                                 <div>
                                     <button className="editButton btn btn-warning" onClick={() => {
                                         setOpenEditor(true)
                                         setSeleccionado(product)
                                     }}>Editar</button>
 
-                                    <button className="deleteButton btn btn-danger" onClick={() => eliminarProducto(product.id)}>Eliminar</button>
+                                    <button className="deleteButton btn btn-danger" onClick={() => eliminarProducto(product.Id)}>Eliminar</button>
                                 </div>
                             </li>
                         ))}

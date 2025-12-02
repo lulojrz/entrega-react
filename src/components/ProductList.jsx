@@ -20,7 +20,7 @@ const ProductList = ({origen}) => {
           {productos?.length > 0 ? (
             productosFiltrados.map((producto) => (
               <Productos
-                key={producto.id}
+                key={producto.Id}
                 producto={producto}
                 agregarCarrito={handleAddToCart}
                 origen={origen}

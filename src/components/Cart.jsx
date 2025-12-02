@@ -18,10 +18,10 @@ const Carrito = ({ isOpen, onClose }) => {
           <>
             <ul className="cart-list">
               {cart.map((producto) => (
-                <li key={producto.id} style={{ marginBottom: "1rem" , color:"black"}}>
-                  <strong>{producto.nombre}</strong> - Cantidad: {producto.cantidad} - Precio unitario: ${producto.precio}
+                <li key={producto.Id} style={{ marginBottom: "1rem" , color:"black"}}>
+                  <strong>{producto.Nombre}</strong> - Cantidad: {producto.Cantidad} - Precio unitario: ${producto.Precio}
                   <br />
-                  <h6>Precio total :${producto.cantidad * producto.precio}</h6>
+                  <h6>Precio total :${producto.Cantidad * producto.Precio}</h6>
                   <div>
                     <button className = "btn btn-primary" onClick={() => handleAddToCart(producto)}>+</button>
                     <button className = "btn btn-danger" onClick={() => handleDeleteFromCart(producto)}>-</button>
@@ -34,7 +34,7 @@ const Carrito = ({ isOpen, onClose }) => {
             <h3>
               Total: $
               {cart.reduce(
-                (total, producto) => total + producto.Precio * producto.cantidad,
+                (total, producto) => total + producto.Precio * producto.Cantidad,
                 0
               )}
             </h3>
