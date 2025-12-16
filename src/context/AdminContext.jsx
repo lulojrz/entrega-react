@@ -8,7 +8,7 @@ export const AdminProvider = ({ children }) => {
     const [open, setOpen] = useState(false)
     const [seleccionado, setSeleccionado] = useState(null)
     const [openEditor, setOpenEditor] = useState(false)
-    const apiUrl = 'http://localhost:8080/products'
+    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8080/products';
 
 
     useEffect(() => {
