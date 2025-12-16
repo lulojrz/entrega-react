@@ -90,7 +90,7 @@ export const AdminProvider = ({ children }) => {
         const confirmar = window.confirm('Estas seguro de eliminar el producto?')
         if (confirmar) {
             try {
-                const respuesta = await fetch(`http://localhost:8080/products/${id}`, {
+                const respuesta = await fetch(`${apiUrl}/${id}`, {
                     method: 'DELETE',
                 })
                 if (!respuesta.ok) throw Error('Error al eliminar')
