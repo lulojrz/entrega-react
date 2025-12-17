@@ -28,19 +28,15 @@ export const CartProvider = ({ children }) => {
                 return respuesta.json();
             })
             .then((datos) => {
-                // El setTimeout es opcional, lo mantengo porque lo tenías en tu código original
-                setTimeout(() => {
-                    console.log("Productos cargados desde Railway:", datos);
-                    setProductos(datos);
-                    setCargando(false);
-                    setError(false);
-                }, 2000);
+                console.log("Productos cargados desde Railway:", datos);
+                setProductos(datos);
+                setCargando(false);
+                setError(false);
             })
             .catch((err) => {
                 console.error('Error al conectar con Railway:', err);
                 setCargando(false);
                 setError(true);
-                toast.error("No se pudieron cargar los productos");
             });
     }, []);
 
@@ -48,7 +44,6 @@ export const CartProvider = ({ children }) => {
         localStorage.setItem("cart", JSON.stringify(cart));
     }, [cart]);
 
-    // Filtrado de productos (asegurando que producto existe antes de acceder a Nombre)
     const productosFiltrados = productos.filter((producto) =>
         producto?.Nombre?.toLowerCase().includes(busqueda.toLowerCase())
     );
@@ -62,4 +57,55 @@ export const CartProvider = ({ children }) => {
                     ? { ...item, Cantidad: item.Cantidad + 1 }
                     : item
             ));
-            toast.success
+            toast.success(`Se agregó otra unidad de ${product.Nombre}`);
+        } else {
+            setCart([...cart, { ...product, Cantidad: 1 }]);
+            toast.success(`${product.Nombre} agregado al carrito`);
+        }
+    };
+
+    const handleDeleteFromCart = (product) => {
+        const productInCart = cart.find(item => item.Id === product.Id);
+
+        if (!productInCart) return;
+
+        if (productInCart.Cantidad > 1) {
+            setCart(cart.map(item =>
+                item.Id === product.Id
+                    ? { ...item, Cantidad: item.Cantidad - 1 }
+                    : item
+            ));
+            toast.info(`Cantidad de ${product.Nombre} disminuida`);
+        } else {
+            setCart(cart.filter(item => item.Id !== product.Id));
+            toast.error(`${product.Nombre} eliminado del carrito`);
+        }
+    };
+
+    const clearCart = () => {
+        setCart([]);
+        localStorage.removeItem("cart");
+        toast.info('Carrito vacío');
+    };
+
+    return (
+        <CartContext.Provider
+            value={{
+                cart,
+                productos,
+                cargando,
+                error,
+                handleAddToCart,
+                handleDeleteFromCart,
+                isAuthenticated,
+                setIsAuth,
+                productosFiltrados,
+                busqueda,
+                setBusqueda,
+                clearCart
+            }}
+        >
+            {children}
+        </CartContext.Provider>
+    );
+};
