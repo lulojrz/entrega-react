@@ -42,9 +42,7 @@ const Admin = () => {
                                     <i className="fa-solid fa-right-from-bracket"></i>
                                 </button>
                             </li>
-                            <li className="navItem">
-                                <a href="/admin">Admin</a>
-                            </li>
+                           
                         </ul>
                     </nav>
                     <h1 className="title">Panel Administrativo</h1>
